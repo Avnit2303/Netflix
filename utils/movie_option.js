@@ -1,8 +1,9 @@
+
 const movie_option = {
-    method: 'GET',
+  method: 'GET',
   headers: {
     accept: 'application/json',
-    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxY2FjOWM4ZTY4OTU4Njg5ZjM2N2Q4ODc4Njg4MmIzYSIsIm5iZiI6MTc1MDI1NzA4NC4yNjU5OTk4LCJzdWIiOiI2ODUyY2RiYzhhNzdkZmQ3YjQ5MmUzMTMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.tDLaIRy0s3RHvqO_dap__tlPzNa2rikPGnFljUMTsSs'
+    Authorization: import.meta.env.VITE_AUTH_KEY // ✅ Correct
   }
 }
 
