@@ -3,15 +3,14 @@ import Header from './Header'
 import Checkvalidation from './Checkvalidation'
 import { auth } from '../../utils/firebase'
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { adduser } from '../../utils/Userslice';
+import { img_url } from '../../utils/constant';
 
 const Login = () => {
     const [signin, setsignin] = useState(true)
     const [error, seterror] = useState(null)
      const dispatch = useDispatch()
-    const navigate = useNavigate()
     const handlesignin = () => {
         setsignin(!signin)
     }
@@ -36,7 +35,6 @@ const Login = () => {
                     }).then(() => {
                         const { uid, email, displayName } = auth.currentUser;
                         dispatch(adduser({ uid: uid, email: email, displayName: displayName }));
-                        navigate("/browse")
                     }).catch((error) => {
                         console.log(error)
                     });
@@ -53,13 +51,11 @@ const Login = () => {
                 .then((userCredential) => {
                     const user = userCredential.user;
                     console.log(user);
-                    navigate("/browse")
-
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    console.log(errorCode + "" + errorMessage)
+                    seterror(errorCode + "" + errorMessage)
                 });
 
         }
@@ -71,8 +67,7 @@ const Login = () => {
         <>
             <Header />
             <div className='absolute  '>
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/8200f588-2e93-4c95-8eab-ebba17821657/web/IN-en-20250616-TRIFECTA-perspective_9cbc87b2-d9bb-4fa8-9f8f-a4fe8fc72545_large.jpg"
-                    alt="netflix" className=' object-cover' />
+                <img src={img_url} alt="logo" className=' object-cover' />
                 <div className='absolute inset-0 bg-black opacity-50 '></div>
             </div>
             <form className='absolute  w-3/12  px-12 my-28 mx-auto left-0 right-0  bg-black opacity-80  text-white ' onSubmit={(e) => e.preventDefault()}>
