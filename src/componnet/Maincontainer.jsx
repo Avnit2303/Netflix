@@ -6,7 +6,7 @@ import Videoplaying from './Videoplaying';
 function Maincontainer() {
   const movie = useSelector((store) => store.movie?.newplayingmovie)
   if(!movie) return;
-  const moviedata = movie[3]
+  const moviedata = movie[1]
   // console.log(moviedata);
   
   const {original_title,overview,id} = moviedata
